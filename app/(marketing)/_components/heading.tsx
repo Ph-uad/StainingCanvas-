@@ -1,11 +1,14 @@
-"use-client";
+"use client";
 
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
+import { useConvexAuth } from "convex/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const Heading = () => {
+  const { isAuthenticated, isLoading } = useConvexAuth();
+
   return (
     <div className="max-w-3xl space-y-4">
       <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold">
@@ -17,15 +20,18 @@ export const Heading = () => {
       </h3>
       <SignedIn>
         <Button asChild>
-          <Link href="/document">
+          <Link href="/documents">
             Get Started <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </SignedIn>
+
       <SignedOut>
-        <Button>
-          Get Motion <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <SignInButton mode="modal">
+          <Button>
+            Ì Get Motion <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </SignInButton>
       </SignedOut>
     </div>
   );
