@@ -4,11 +4,13 @@ import { cn } from "@/lib/utils";
 import {
   ChevronLeft,
   MenuIcon,
+  Plus,
   PlusCircle,
   Search,
   Settings,
+  Trash,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { ComponentRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./useritem";
@@ -17,8 +19,18 @@ import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { toast } from "sonner";
 import { DocumentList } from "./document-list";
+import { Popover } from "@/components/ui/popover";
+import { PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
+import { TrashBox } from "./trash-box";
+import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
+import Navbar from "./navbar";
 
 export const MainNavigation = () => {
+  const router = useRouter();
+  const params = useParams();
+  const settings = useSettings();
+  const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const create = useMutation(api.documents.create);
@@ -111,7 +123,8 @@ export const MainNavigation = () => {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" })
+    .then((documentID) => router.push(`document${documentID}`))
 
     toast.promise(promise, {
       loading: "Creating...",
@@ -144,18 +157,31 @@ export const MainNavigation = () => {
         </div>
         <div className="p-2">
           <UserItem />
+          <Item icon={Search} label="Search" isSearch onClick={search.onOpen} />
+          <Item icon={Settings} label="Settings" onClick={settings.onOpen} />
           <Item icon={PlusCircle} label="Create New" onClick={handleCreate} />
-          <Item icon={Search} label="Search" isSearch onClick={() => {}} />
-          <Item icon={Settings} label="Settings" onClick={() => {}} />
         </div>
         <div className="p-2 mt-2">
           <DocumentList />
+          <Item label="Add a page" icon={Plus} onClick={handleCreate} />
         </div>
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
           className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
         />
+
+        <Popover>
+          <PopoverTrigger className="mt-4 w-full">
+            <Item label="Trash" icon={Trash} />
+          </PopoverTrigger>
+          <PopoverContent
+            className="p-0 w-72"
+            side={isMobile ? "bottom" : "right"}
+          >
+            <TrashBox />
+          </PopoverContent>
+        </Popover>
       </aside>
       <div
         ref={navbarRef}
@@ -165,15 +191,21 @@ export const MainNavigation = () => {
           isMobile && "left-0 w-full"
         )}
       >
-        <nav className="bg-transparent px-3 py-2 w-full">
-          {isCollapsed && (
-            <MenuIcon
-              role="button"
-              onClick={resetWidth}
-              className="h-6 w-6 text-muted-foreground"
-            />
-          )}
-        </nav>
+        {!!params.documentID ? (
+          <>
+            <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+          </>
+        ) : (
+          <nav className="bg-transparent px-3 py-2 w-full fixed left-0 ">
+            {isCollapsed && (
+              <MenuIcon
+                role="button"
+                onClick={resetWidth}
+                className="h-6 w-6 text-muted-foreground"
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   );

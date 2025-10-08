@@ -1,12 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@source "../node_modules/@blocknote/shadcn";
 
+@custom-variant dark (&:is(.dark *));
 
 html,
 body,
-:root{
+:root {
   height: 100%;
 }
 
@@ -126,4 +127,8 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.bn-editor{
+  background: transparent;
 }

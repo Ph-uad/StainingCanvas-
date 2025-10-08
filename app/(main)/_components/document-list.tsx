@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/convex/_generated/api";
-import { Doc, Id as ID } from "@/convex/_generated/dataModel";
+import { Doc, Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,13 +9,13 @@ import { FileIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface DocumentListProps {
-  parentDocumenttID?: ID<"documents">;
+  parentDocumentID?: Id<"documents">;
   level?: number;
   data?: Doc<"documents">[];
 }
 
 export const DocumentList = ({
-  parentDocumenttID,
+  parentDocumentID,
   level = 0,
 }: DocumentListProps) => {
   const params = useParams();
@@ -31,7 +31,7 @@ export const DocumentList = ({
   };
 
   const documents = useQuery(api.documents.getSidebar, {
-    parentDocument: parentDocumenttID,
+    parentDocument: parentDocumentID,
   });
 
   const onRedirect = (documentID: string) => {
@@ -80,7 +80,7 @@ export const DocumentList = ({
             expanded={expanded[document._id]}
           />
           {expanded[document._id] && (
-            <DocumentList parentDocumenttID={document._id} level={level + 1} />
+            <DocumentList parentDocumentID={document._id} level={level + 1} />
           )}
         </div>
       ))}

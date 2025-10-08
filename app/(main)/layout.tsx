@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { useAuth } from "@clerk/clerk-react";
 import { Spinner } from "@/components/spinner";
 import MainNavigation from "./_components/navigation";
+import { SearchCommand } from "@/components/ui/search-command";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const { isLoaded, isSignedIn } = useAuth();
@@ -21,10 +22,12 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <div className="h-full flex dark:bg[#1f1f1f]">
+    <div className="flex dark:bg[#1f1f1f] relative overflow-y-hidden h-[100vh]">
       <MainNavigation />
-      <main className=" flex-1 h-full overflow-y-auto px-2">
-        {children}</main>
+      <main className=" flex-1 h-full overflow-y-auto ">
+        <SearchCommand />
+        {children}
+      </main>
     </div>
   );
 };
