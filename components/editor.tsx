@@ -5,8 +5,7 @@ import { useTheme } from "next-themes";
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote, useEditorChange } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
-import { PartialBlock } from "@blocknote/core";
-import { on } from "events";
+import { PartialBlock } from "@blocknote/core"; 
 import { useEdgeStore } from "@/lib/edgestore";
 // import "@blocknote/shadcn/style.css";
 
