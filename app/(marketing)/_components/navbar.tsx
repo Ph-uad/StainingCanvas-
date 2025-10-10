@@ -3,14 +3,14 @@
 import { Logo } from "./logo";
 import { cn } from "@/lib/utils";
 
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { useScrollTop } from "@/hooks/use-scroll-top";
-import { ModeToggle } from "@/components/ui/mode-toggle";
-import Link from "next/link";
+import { ModeToggle } from "@/components/ui/mode-toggle"; 
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+
 
 export const Navbar = () => {
-  const scrolled = useScrollTop();
+  const scrolled = useScrollTop(); 
 
   return (
     <div
@@ -35,7 +35,6 @@ export const Navbar = () => {
 
         <SignedIn>
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/documents"> Enter</Link>
           </Button>
           <UserButton />
         </SignedIn>

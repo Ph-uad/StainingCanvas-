@@ -129,6 +129,7 @@ body,
   }
 }
 
-.bn-editor{
-  background: transparent;
+
+button:hover{
+  cursor: pointer;
 }
