@@ -5,7 +5,7 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
 // import "@blocknote/mantine/style.css";
 
-export default function EditableHeader() {
+export function EditableHeader() {
   const editor = useCreateBlockNote({
     initialContent: [
       {
