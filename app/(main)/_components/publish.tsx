@@ -67,7 +67,7 @@ export const Publish = ({ initialData }: PublishProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button>
+        <Button className="hover:cursor-pointer">
           <h2>Publish </h2>
           {initialData.isPublished && (
             <Globe className="text-sky-500 w-4 h-4 ml-2" />
@@ -76,7 +76,7 @@ export const Publish = ({ initialData }: PublishProps) => {
       </PopoverTrigger>
       <PopoverContent className="w-72" align="end" alignOffset={8} forceMount>
         {initialData.isPublished ? (
-          <div className="space-y-4">
+          <div className="space-y-4 ">
             <div className="flex items-center gap-x-2">
               <Globe className="text-sky-500 animate-pulse h-4 w-4" />
               <p className="text-xs font-medium text-sky-500">
@@ -102,7 +102,7 @@ export const Publish = ({ initialData }: PublishProps) => {
               </Button>
             </div>
             <Button
-              className="w-full text-x"
+              className="hover:cursor-pointer w-full text-x bg-accent"
               size={"sm"}
               disabled={isSubmitting}
               onClick={onUnPublish}
@@ -111,10 +111,13 @@ export const Publish = ({ initialData }: PublishProps) => {
             </Button>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center">
-            <Globe className="h-8 w-8 text-muted-foreground mb-2" />
-            <p className="text-sm font-medium mb-2">Publish</p>
-            <span>Make {initialData.title} public</span>
+          <div className="hover:cursor-pointer flex flex-col items-center justify-center">
+            <div className="flex gap-x-2 items-center justify-center">
+              <div className="">
+                <Globe className="h-8 w-8 text-muted-foreground mb-2" />
+              </div>
+              <span>Make {initialData.title} public</span>
+            </div>
             <Button
               disabled={isSubmitting}
               onClick={onPublish}

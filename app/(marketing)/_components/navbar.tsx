@@ -10,7 +10,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 
 
 export const Navbar = () => {
-  const scrolled = useScrollTop();
+  const scrolled = useScrollTop(); 
 
   return (
     <div

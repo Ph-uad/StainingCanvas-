@@ -3,9 +3,12 @@
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
+import { useTheme } from "next-themes";
 // import "@blocknote/mantine/style.css";
 
 export function EditableHeader() {
+  
+  const { resolvedTheme } = useTheme();
   const editor = useCreateBlockNote({
     initialContent: [
       {
@@ -13,32 +16,25 @@ export function EditableHeader() {
         props: {
           level: 1,
         },
-        content: "Welcome to this demo!",
+        content: "Write yours here",
       },
       {
         type: "heading",
         props: {
           level: 2,
         },
-        content: "Open up a menu or toolbar to see more of the red theme",
-      },
-      {
-        type: "heading",
-        props: {
-          level: 3,
-        },
-        content:
-          "Toggle light/dark mode in the page footer and see the theme change too",
-      },
-      {
-        type: "paragraph",
+        content: "With US",
       },
     ],
   });
 
   return (
-    <div className="bg-muted-foreground rounded-lg w-11/12 h-fit py-3">
-      <BlockNoteView editor={editor} />
+    <div className="rounded-lg w-fit h-fit pb-[45vh]">
+      <BlockNoteView
+        editor={editor}
+        className="text-green-500"
+        theme={resolvedTheme === "dark" ? "dark" : "light"}
+      />
     </div>
   );
 }
