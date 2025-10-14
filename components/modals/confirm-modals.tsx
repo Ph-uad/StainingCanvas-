@@ -13,7 +13,7 @@ import {
 
 interface ConfirmModalProps {
   children: React.ReactNode;
-  onConfirm: (e: any) => void;
+  onConfirm: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const ConfirmModal = ({ children, onConfirm }: ConfirmModalProps) => {

@@ -3,8 +3,7 @@
 import "@blocknote/core/fonts/inter.css";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/shadcn";
-import { useTheme } from "next-themes";
-// import "@blocknote/mantine/style.css";
+import { useTheme } from "next-themes"; 
 
 export function EditableHeader() {
   

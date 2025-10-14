@@ -45,17 +45,17 @@ export const Title = ({ initialData }: TitleProps) => {
     });
   };
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      disableInput();
-      inputRef.current?.blur();
-    }
-    if (event.key === "Escape") {
-      setTitle(initialData.title || "Untitled ");
-      setIsEditing(false);
-      inputRef.current?.blur();
-    }
-  };
+  // const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === "Enter") {
+  //     disableInput();
+  //     inputRef.current?.blur();
+  //   }
+  //   if (event.key === "Escape") {
+  //     setTitle(initialData.title || "Untitled ");
+  //     setIsEditing(false);
+  //     inputRef.current?.blur();
+  //   }
+  // };
 
   return (
     <>

@@ -11,7 +11,7 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";
-import { MenuIcon, MoreHorizontal, Trash } from "lucide-react";
+import {  MoreHorizontal, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -19,21 +19,20 @@ interface MenuProps {
   documentID?: Id<"documents">;
 }
 
-const Menu = ({ documentID }: MenuProps) => {
-  const router = useRouter();
+const Menu = ({ documentID }: MenuProps) => { 
   const { user } = useUser();
 
   const archive = useMutation(api.documents.archive);
 
-  const onArchive = () => {
-    const promise = archive({ id: documentID! });
+  // const onArchive = () => {
+  //   const promise = archive({ id: documentID! });
 
-    toast.promise(promise, {
-      loading: "Trashing...",
-      success: "Moved to trash!",
-      error: "Something went wrong. Try Again",
-    });
-  };
+  //   toast.promise(promise, {
+  //     loading: "Trashing...",
+  //     success: "Moved to trash!",
+  //     error: "Something went wrong. Try Again",
+  //   });
+  // };
 
   return (
     <DropdownMenu>
