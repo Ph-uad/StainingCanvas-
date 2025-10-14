@@ -46,7 +46,7 @@ export const TrashBox: React.FC = () => {
   };
 
   const onRemove = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.MouseEvent<HTMLButtonElement, MouseEvent>,
     documentID: Id<"documents">
   ) => {
     event.stopPropagation();

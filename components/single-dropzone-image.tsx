@@ -21,7 +21,7 @@ export function SingleImageDropzoneUsage({}) {
   const coverImage = useCoverImage();
 
   const uploadFn: UploadFn = React.useCallback(
-    async ({ file, onProgressChange, signal }) => {
+    async ({ file }) => {
       const res = await edgestore.publicFiles.upload({
         file,
         options: {

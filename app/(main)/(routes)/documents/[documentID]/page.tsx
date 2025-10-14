@@ -13,10 +13,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 
-interface DocumentIDPageProps {
-  documentID: Id<"documents">;
-}
-const DocumentIDPage = ({ documentID }: DocumentIDPageProps) => {
+
+const DocumentIDPage = () => {
 
   const Editor = useMemo(() => dynamic(() => import("@/components/editor"), {ssr : false}), [])
   const params = useParams();
