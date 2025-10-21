@@ -5,23 +5,25 @@ import { Button } from "@/components/ui/button";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
 import { LockKeyhole, Pen, UnlockKeyhole } from "lucide-react";
+import { Monsieur_La_Doulaise } from "next/font/google";
 import Link from "next/link";
 
+const MonsieurLaDoulaise = Monsieur_La_Doulaise({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-monsieur-la-doulaise",
+});
 export const Heading = () => {
+
   const { isLoading } = useConvexAuth();
 
   return (
-    <div className="w-fit space-y-4  mt-[30vh]">
-      <div className="flex flex-col gap-y-4 mt-auto h-fit">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-left">
-          Cloud note.
-          <br />
-          Write, write and share
-          <br />
-          Accesible from anywhere
-          <br />
-          {/* <em className=""> StainingCanvas </em> */}
+    <div className=" space-y-4  w-full">
+      <div className="flex flex-col gap-y-4 h-fit w-full px-20">
+        <h1 className={` sm:text-7xl md:text-9xl font-bold ${MonsieurLaDoulaise.className} text-center`}>
+          Write
         </h1>
+        <p className="ml-auto italic lowercase">... it's Accesible from anywhere</p>
 
         {!isLoading && (
           <SignedIn>
@@ -49,9 +51,7 @@ export const Heading = () => {
           </SignInButton>
         </SignedOut>
       </div>
-      <div className="">
-
-      </div>
+      <div className=""></div>
     </div>
   );
 };
