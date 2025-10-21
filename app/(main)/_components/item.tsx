@@ -83,7 +83,7 @@ export const Item = ({
         if (!expanded) {
           onExpand?.();
         }
-        router.push(`document/${documentID}`)
+        router.push(`/documents/${documentID}`)
       }
     );
 
