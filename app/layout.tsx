@@ -1,6 +1,6 @@
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Monsieur_La_Doulaise } from "next/font/google";
+import { Geist_Mono, Inter, Monsieur_La_Doulaise } from "next/font/google";
 import "@blocknote/shadcn/style.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";

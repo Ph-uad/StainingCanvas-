@@ -6,11 +6,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Skeleton } from "@/components/ui/skeleton";
-import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
-import { useUser } from "@clerk/clerk-react";
-import { useMutation } from "convex/react";
+import { Skeleton } from "@/components/ui/skeleton"; 
+import { useUser } from "@clerk/clerk-react"; 
 import {  MoreHorizontal, Trash } from "lucide-react"; 
 
 // interface MenuProps {
