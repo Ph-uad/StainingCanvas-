@@ -18,7 +18,9 @@ export const Banner = ({ documentID }: BannerProps) => {
   const restore = useMutation(api.documents.restore);
 
   const onRemove = () => {
-    const promise = remove({ id: documentID });
+    const promise = remove({ id: documentID })
+      .then(() => router.push("/documents"));
+    
 
     toast.promise(promise, {
       loading: "Removing...",
@@ -26,7 +28,7 @@ export const Banner = ({ documentID }: BannerProps) => {
       error: "Something went wrong. Try Again",
     });
 
-    router.push("/documents");
+
   };
 
   const onRestore = () => {

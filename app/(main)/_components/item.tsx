@@ -59,8 +59,7 @@ export const Item = ({
     event.stopPropagation();
     if (!id) return;
 
-    const promise = archive({ id })
-          .then(() => router.push(`/documents`));
+    const promise = archive({ id });
 
     toast.promise(promise, {
       loading: "Deleting document...",
@@ -84,7 +83,7 @@ export const Item = ({
         if (!expanded) {
           onExpand?.();
         }
-        router.push(`/documents/${documentID}`)
+        router.push(`documents/${documentID}`)
       }
     );
 
