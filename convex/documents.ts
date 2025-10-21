@@ -226,7 +226,7 @@ export const getByID = query({
     const documents = await ctx.db.get(args.documentID);
     if (!documents) throw new Error("Not found");
 
-    const userID = identity?.subject;
+    const userID = identity.subject;
     if (documents?.userID !== userID) throw new Error("Unauthorized");
     
     if (documents?.isPublished && !documents?.isArchived) return documents;
