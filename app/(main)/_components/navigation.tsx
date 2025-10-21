@@ -125,7 +125,7 @@ export const MainNavigation = () => {
 
   const handleCreate = () => {
     const promise = create({ title: "Untitled" })
-      .then((documentID) => router.push(`documents/${documentID}`));
+      .then((documentID) => router.push(`/documents/${documentID}`));
 
     toast.promise(promise, {
       loading: "Creating...",
