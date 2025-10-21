@@ -7,6 +7,7 @@ import { useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { ConfirmModal } from "../../../components/modals/confirm-modals";
+import { Trash, Undo2 } from "lucide-react";
 
 interface BannerProps {
   documentID: Id<"documents">;
@@ -18,17 +19,14 @@ export const Banner = ({ documentID }: BannerProps) => {
   const restore = useMutation(api.documents.restore);
 
   const onRemove = () => {
-    const promise = remove({ id: documentID })
-      .then(() => router.push("/documents"));
-    
+    router.push("/documents");
+    const promise = remove({ id: documentID });
 
     toast.promise(promise, {
       loading: "Removing...",
       success: "Deleted",
       error: "Something went wrong. Try Again",
     });
-
-
   };
 
   const onRestore = () => {
@@ -42,7 +40,7 @@ export const Banner = ({ documentID }: BannerProps) => {
   };
 
   return (
-    <div className="w-full bg-rose-500 text-center text-sm text-white flex items-center gap-x-2 justify-center p-2">
+    <div className="w-full bg-rose-500/90 text-center text-sm text-white flex items-center gap-x-2 justify-center p-2">
       <p>this page is in the trash </p>
       <Button
         size="sm"
@@ -50,16 +48,18 @@ export const Banner = ({ documentID }: BannerProps) => {
         variant="outline"
         className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white p-1 px-2 h-auto font-normal"
       >
+        <Undo2 className="mr-1 h-4 w-4" />
         Restore
       </Button>
       <ConfirmModal onConfirm={onRemove}>
         <Button
+          role="button"
           size="sm"
-          variant="outline"
+          variant="destructive"
           className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white p-1 px-2 h-auto font-normal"
         >
-          {" "}
-          Delete Forever{" "}
+          <Trash className="mr-1 h-4 w-4" />
+          Delete Forever
         </Button>
       </ConfirmModal>
     </div>

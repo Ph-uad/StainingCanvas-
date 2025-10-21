@@ -150,13 +150,13 @@ export const MainNavigation = () => {
           role="button"
           onClick={collapse}
           className={cn(
-            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
-            isMobile && "opacity-100"
+            "hidden h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
+            isMobile && "block opacity-100"
           )}
         >
           <ChevronLeft className="h-6 w-6" />
         </div>
-        <div className="p-2">
+        <div className="p-4">
           <UserItem />
           <Item icon={Search} label="Search" isSearch onClick={search.onOpen} />
           <Item icon={Settings} label="Settings" onClick={settings.onOpen} />

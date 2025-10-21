@@ -16,7 +16,8 @@ interface NavbarProps {
 }
 
 const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
-  const params = useParams();
+  const params = useParams(); 
+
 
   const document = useQuery(api.documents.getByID, {
     documentID: params.documentID as Id<"documents">,

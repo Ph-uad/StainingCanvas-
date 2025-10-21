@@ -20,17 +20,17 @@ export const UserItem: React.FC = () => {
       <DropdownMenuTrigger>
         <div
           role="button"
-          className="flex item-center text-sm p-3 w-full hover:bg-primary/5"
+          className="flex item-center text-sm p-3 w-full rounded-md hover:bg-primary/5 mb-10 "
         >
-          <div className="flex items-center max-w-[150px]">
-            <Avatar className="h-5 w-5">
-              <AvatarImage src={user?.imageUrl} />
+          <div className="flex items-center">
+            <Avatar className=" mr-4 rounded-full bg-secondary">
+              <AvatarImage src={user?.imageUrl} className="rounded-full h-8 w-8" />
             </Avatar>
-            <span className="text-start font-medium line-clamp-1">
+            <span className="text-start font-medium">
               {user?.fullName}
             </span>
           </div>
-          <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
+          <ChevronsLeftRight className="rotate-90 ml-2 mt-2 text-muted-foreground h-4 w-4" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent
