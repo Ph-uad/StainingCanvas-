@@ -221,12 +221,14 @@ export const getByID = query({
   args: { documentID: v.id("documents") },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
-    const documents = await ctx.db.get(args.documentID);
-    const userID = identity?.subject;
-
-    if (!documents) throw new Error("Not found");
     if (!identity) throw new Error("Not authenticated");
+
+    const documents = await ctx.db.get(args.documentID);
+    if (!documents) throw new Error("Not found");
+
+    const userID = identity?.subject;
     if (documents?.userID !== userID) throw new Error("Unauthorized");
+    
     if (documents?.isPublished && !documents?.isArchived) return documents;
 
     return documents;
