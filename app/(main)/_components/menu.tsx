@@ -11,18 +11,16 @@ import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";
-import {  MoreHorizontal, Trash } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import {  MoreHorizontal, Trash } from "lucide-react"; 
 
-interface MenuProps {
-  documentID?: Id<"documents">;
-}
+// interface MenuProps {
+//   documentID?: Id<"documents">;
+// }
 
-const Menu = ({ documentID }: MenuProps) => { 
+const Menu = ({}) => { 
   const { user } = useUser();
 
-  const archive = useMutation(api.documents.archive);
+  // const archive = useMutation(api.documents.archive);
 
   // const onArchive = () => {
   //   const promise = archive({ id: documentID! });
