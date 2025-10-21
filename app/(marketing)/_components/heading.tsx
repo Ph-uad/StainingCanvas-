@@ -23,7 +23,7 @@ export const Heading = () => {
         <h1 className={` sm:text-7xl md:text-9xl font-bold ${MonsieurLaDoulaise.className} text-center`}>
           Write
         </h1>
-        <p className="ml-auto italic lowercase">... it's Accesible from anywhere</p>
+        <p className="ml-auto italic lowercase">... it&apos;s Accessible from anywhere</p>
 
         {!isLoading && (
           <SignedIn>
