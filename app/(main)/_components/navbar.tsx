@@ -48,7 +48,7 @@ const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
           <Title initialData={document} />
           <div className="flex items-center gap-x-2">
             <Publish initialData={document}/>
-            <Menu documentID={document._id} />
+            <Menu />
           </div> 
         </div>
       </nav>
