@@ -40,7 +40,7 @@ export const MainNavigation = () => {
   const navbarRef = useRef<ComponentRef<"div">>(null);
   const [isRestting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
-    const resetWidth = () => {
+  const resetWidth = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(false);
       setIsResetting(true);
@@ -57,7 +57,6 @@ export const MainNavigation = () => {
       }, 300);
     }
   };
-
 
   useEffect(() => {
     if (isMobile) {
@@ -107,7 +106,6 @@ export const MainNavigation = () => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true);
@@ -124,15 +122,19 @@ export const MainNavigation = () => {
   };
 
   const handleCreate = async () => {
+    let documentID: string | null;
     const task = (async () => {
-      const documentID = await create({ title: "Untitled" });
+      documentID = await create({ title: "Untitled" });
       if (!documentID) throw new Error("Invalid document id");
       router.push(`/document/${documentID}`);
     })();
 
     toast.promise(task, {
       loading: "Creating...",
-      success: "Successfully created",
+      success: () => {
+        router.push(`/document/${documentID}`);
+        return "Successfully created";
+      },
       error: "Something went wrong. Try again",
     });
   };
