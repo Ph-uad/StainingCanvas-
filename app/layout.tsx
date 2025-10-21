@@ -1,6 +1,6 @@
 import { Toaster } from "sonner";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Monsieur_La_Doulaise } from "next/font/google";
 import "@blocknote/shadcn/style.css";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -8,14 +8,20 @@ import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ModalProvider } from "@/components/providers/modal-providers";
 import { EdgeStoreProvider } from "@/lib/edgestore";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const MonsieurLaDoulaise = Monsieur_La_Doulaise({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-monsieur-la-doulaise",
 });
 
 export const metadata: Metadata = {
@@ -45,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-[#1f1f1f]`}
+        className={`${inter.className} ${geistMono.variable} ${MonsieurLaDoulaise.variable} antialiased dark:bg-[#1f1f1f]`}
       >
         <ConvexClientProvider>
           <EdgeStoreProvider>

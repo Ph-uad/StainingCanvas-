@@ -123,14 +123,17 @@ export const MainNavigation = () => {
     }
   };
 
-  const handleCreate = () => {
-    const promise = create({ title: "Untitled" })
-    .then((documentID) => router.push(`document${documentID}`))
+  const handleCreate = async () => {
+    const task = (async () => {
+      const documentID = await create({ title: "Untitled" });
+      if (!documentID) throw new Error("Invalid document id");
+      router.push(`/document/${documentID}`);
+    })();
 
-    toast.promise(promise, {
+    toast.promise(task, {
       loading: "Creating...",
-      success: "Successfull",
-      error: "Something went wrong. Try Again",
+      success: "Successfully created",
+      error: "Something went wrong. Try again",
     });
   };
 

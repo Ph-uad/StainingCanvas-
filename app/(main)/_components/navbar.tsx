@@ -31,7 +31,8 @@ const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
         </div>
       </nav>
     );
-  if (document === null) return null;
+
+  if (document === null) return <>Nothing was found</>;
 
   return (
     <>

@@ -7,11 +7,12 @@ import {Campaign} from "./_components/campaign";
 
 export default function MarketingPage() {
   return (
-    <div className="min-h-full flex flex-col">
-      <div className="flex flex-col items-center justify-center md:justify-start text-center gap-y-40 flex-1 px-6 pb-10">
-        <Heading />
+    <div className="min-h-full">
+      <div className="grid grid-cols-2 grid-rows-2 h-full gap-x-2 gap-y-10">
         <Campaign />
-        {/* <EditableHeader />  */}
+        <div className=""></div>
+        <div className=""></div>
+        <Heading />
       </div>
       <Footer />
     </div>
