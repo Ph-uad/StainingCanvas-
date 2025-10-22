@@ -16,8 +16,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
-  const params = useParams(); 
-
+  const params = useParams();
 
   const document = useQuery(api.documents.getByID, {
     documentID: params.documentID as Id<"documents">,
@@ -27,7 +26,7 @@ const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
     return (
       <nav className="dark:bg-[#1f1f1f] px-3 py-2 w-fit flex items-center justify-between">
         <Title.Skeleton />
-        <div className="flex items-center gap-x-2"> 
+        <div className="flex items-center gap-x-2">
           <Menu.Skeleton />
         </div>
       </nav>
@@ -47,17 +46,15 @@ const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
         )}
         <div className="flex items-center justify-between w-full">
           <Title initialData={document} />
-          <div className="flex items-center gap-x-2">
-            <Publish initialData={document}/>
-            <Menu />
-          </div> 
+          {!document.isArchived && (
+            <div className="flex items-center gap-x-2">
+              <Publish initialData={document} />
+              <Menu documentID={params.documentID as Id<"documents">} />
+            </div>
+          )}
         </div>
       </nav>
-      {document.isArchived && (
-        <Banner
-          documentID={document._id}
-        />
-      )}
+      {document.isArchived && <Banner documentID={document._id} />}
     </>
   );
 };

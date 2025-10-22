@@ -15,7 +15,7 @@ const DocumentPage = () => {
 
   const onCreate = () => {
     const promise = create({ title: "Untitled" }).then((documentID) => {
-      router.push(`/document/${documentID}`);
+      router.push(`/documents/${documentID}`);
     });
 
     toast.promise(promise, {

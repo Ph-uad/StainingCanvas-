@@ -11,7 +11,7 @@ import {
   Trash,
 } from "lucide-react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { ComponentRef, useEffect, useRef, useState } from "react";
+import { ComponentRef, useCallback, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./useritem";
 import { useMutation } from "convex/react";
@@ -25,6 +25,7 @@ import { TrashBox } from "./trash-box";
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
 import Navbar from "./navbar";
+import { Logo } from "@/app/(marketing)/_components/logo";
 
 export const MainNavigation = () => {
   const router = useRouter();
@@ -40,12 +41,14 @@ export const MainNavigation = () => {
   const navbarRef = useRef<ComponentRef<"div">>(null);
   const [isRestting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
-    const resetWidth = () => {
+
+  const resetWidth = useCallback(() => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(false);
-      setIsResetting(true);
+      setIsResetting(true); 
 
-      sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+      sidebarRef.current.style.width = isMobile ? "100vw" : "240px";
+      sidebarRef.current.style.setProperty("width", isMobile ? "100vw" : "240px");
       navbarRef.current.style.setProperty(
         "width",
         isMobile ? "0" : "calc(100% - 240px)"
@@ -56,8 +59,7 @@ export const MainNavigation = () => {
         setIsResetting(false);
       }, 300);
     }
-  };
-
+  }, [isMobile]);
 
   useEffect(() => {
     if (isMobile) {
@@ -107,7 +109,6 @@ export const MainNavigation = () => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true);
@@ -115,7 +116,7 @@ export const MainNavigation = () => {
 
       sidebarRef.current.style.width = "0";
       navbarRef.current.style.setProperty("width", "100%");
-      navbarRef.current.style.setProperty("left", "-10");
+      navbarRef.current.style.setProperty("left", "0");
 
       setTimeout(() => {
         setIsResetting(false);
@@ -124,8 +125,9 @@ export const MainNavigation = () => {
   };
 
   const handleCreate = () => {
-    const promise = create({ title: "Untitled" })
-      .then((documentID) => router.push(`/documents/${documentID}`));
+    const promise = create({ title: "Untitled" }).then((documentID) =>
+      router.push(`/documents/${documentID}`)
+    );
 
     toast.promise(promise, {
       loading: "Creating...",
@@ -150,8 +152,8 @@ export const MainNavigation = () => {
           role="button"
           onClick={collapse}
           className={cn(
-            "hidden h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition",
-            isMobile && "block opacity-100"
+            "h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 absolute top-3 right-2 opacity-50 group-hover/sidebar:opacity-100 transition",
+            isMobile && " opacity-100"
           )}
         >
           <ChevronLeft className="h-6 w-6" />
@@ -183,6 +185,9 @@ export const MainNavigation = () => {
             <TrashBox />
           </PopoverContent>
         </Popover>
+        <div className="absolute bottom-1 mb-4 px-4">
+          <Logo />
+        </div>
       </aside>
       <div
         ref={navbarRef}

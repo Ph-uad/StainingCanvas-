@@ -40,28 +40,30 @@ export const Banner = ({ documentID }: BannerProps) => {
   };
 
   return (
-    <div className="w-full bg-rose-500/90 text-center text-sm text-white flex items-center gap-x-2 justify-center p-2">
-      <p>this page is in the trash </p>
-      <Button
-        size="sm"
-        onClick={onRestore}
-        variant="outline"
-        className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white p-1 px-2 h-auto font-normal"
-      >
-        <Undo2 className="mr-1 h-4 w-4" />
-        Restore
-      </Button>
-      <ConfirmModal onConfirm={onRemove}>
+    <div className="w-full bg-rose-500/90 text-center text-sm text-white flex flex-col gap-y-3 items-center gap-x-2 justify-center p-2">
+      <p className="font-bold uppercase">this page is in the trash </p>
+      <div className="flex gap-x-2">
         <Button
-          role="button"
           size="sm"
-          variant="destructive"
+          onClick={onRestore}
+          variant="outline"
           className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white p-1 px-2 h-auto font-normal"
         >
-          <Trash className="mr-1 h-4 w-4" />
-          Delete Forever
+          <Undo2 className="mr-1 h-4 w-4" />
+          Restore
         </Button>
-      </ConfirmModal>
+        <ConfirmModal onConfirm={onRemove}>
+          <Button
+            role="button"
+            size="sm"
+            variant="destructive"
+            className="border-white bg-transparent hover:bg-primary/5 text-white hover:text-white p-1 px-2 h-auto font-normal"
+          >
+            <Trash className="mr-1 h-4 w-4" />
+            Delete Forever
+          </Button>
+        </ConfirmModal>
+      </div>
     </div>
   );
 };
