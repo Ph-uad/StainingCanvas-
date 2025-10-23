@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Staining Canvas  
+*Write and share anywhere and anytime.*
 
-## Getting Started
+![Node.js](https://img.shields.io/badge/node-%3E%3D18-green)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+  
+---
 
-First, run the development server:
+## 🖋 Overview  
+**Staining Canvas** is a full-stack web application that allows GitHub users to sign in and write documents that can have subdocuments beneath them.  
+Users can **publish, archive, restore, or delete** their writings, and share public documents via link.  
+Unsigned visitors can view shared public documents, while signed-in users can create and manage their own writing space.
+
+---
+
+## ⚙️ Features  
+- ✍️ Intuitive document editor with markdown support  
+- 🧩 Subdocument hierarchy (parent → children)  
+- 🕓 Versioning and draft management  
+- 🚀 Publish, archive, and restore workflows  
+- 🔐 GitHub OAuth for secure authentication  
+- 🌍 Shareable public links for published docs  
+- ⚡ Real-time updates powered by Convex
+
+---
+
+## 🧠 Tech Stack  
+
+| Technology | Purpose |
+|-------------|----------|
+| **Next.js** | Full-stack framework for frontend and backend |
+| **Convex** | Real-time database and backend logic |
+| **Clerk** | Authentication and user management |
+| **Zod** | Data validation and state management |
+| **Shadcn/UI** | Styled components and UI primitives |
+| **Lucide React** | Icons |
+| **Vercel** | Deployment and hosting |
+
+<div align="left">
+  <img src="https://raw.githubusercontent.com/vercel/vercel/main/packages/frameworks/logos/next.svg" height="36" alt="Next.js" />
+  <img src="https://avatars.githubusercontent.com/u/116117145?s=200&v=4" height="36" alt="Convex" />
+  <img src="https://avatars.githubusercontent.com/u/105443040?s=200&v=4" height="36" alt="Clerk" />
+</div>
+
+---
+
+## 🧩 Installation  
 
 ```bash
+# 1. Clone the repository
+git clone repo-url
+
+# 2. Navigate into the directory
+cd staining-canvas
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 5. Start Convex locally (in a separate terminal)
+npx convex dev
