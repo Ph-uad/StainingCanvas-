@@ -20,7 +20,7 @@ const DocumentIDPage = ( ) => {
   );
   const params = useParams();
   const update = useMutation(api.documents.update);
-  const document = useQuery(api.documents.getByID, {
+  const document = useQuery(api.documents.getPublishedByID, {
     documentID: params.documentID as Id<"documents">,
   });
 

@@ -227,11 +227,23 @@ export const getByID = query({
     if (!documents) throw new Error("Not found");
 
     const userID = identity.subject;
-    if (documents?.userID !== userID) throw new Error("Unauthorized");
+    if (documents?.userID !== userID || !documents?.isPublished) throw new Error("Unauthorized");
     
     if (documents?.isPublished && !documents?.isArchived) return documents;
 
     return documents;
+  },
+});
+
+export const getPublishedByID = query({
+  args: { documentID: v.id("documents") },
+  handler: async (ctx, args) => {
+    const documents = await ctx.db.get(args.documentID);
+    if (!documents) throw new Error("Not found");
+
+    if (documents?.isPublished && !documents?.isArchived) return documents;
+
+    return null;
   },
 });
 
