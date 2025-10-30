@@ -20,7 +20,7 @@ export const Heading = () => {
   return (
     <div className=" space-y-4  w-full">
       <div className="flex flex-col gap-y-4 h-fit w-full px-20">
-        <h1 className={` sm:text-7xl md:text-9xl font-bold ${MonsieurLaDoulaise.className} text-center`}>
+        <h1 className={`md:scale-200 text-9xl font-bold ${MonsieurLaDoulaise.className} text-center`}>
           Write
         </h1>
         <p className="ml-auto italic lowercase">... it&apos;s Accessible from anywhere</p>

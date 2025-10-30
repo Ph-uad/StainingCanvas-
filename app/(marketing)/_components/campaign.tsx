@@ -31,7 +31,7 @@ export const Campaign = () => {
 
   return (
     <>
-      <div className="text-9xl">
+      <div className="text-9xl flex flex-col md:flex-row justify-center items-center h-full w-full">
         {/* <h2>It is Just Words</h2> */}
         <h3 className="flex justify-center gap-x-2 items-end ">
           <em>

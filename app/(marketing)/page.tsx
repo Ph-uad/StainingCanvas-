@@ -10,8 +10,8 @@ export default function MarketingPage() {
     <div className="min-h-full">
       <div className="grid grid-cols-2 grid-rows-2 h-full gap-x-2 gap-y-10">
         <Campaign />
-        <div className=""></div>
-        <div className=""></div>
+        <div className="hidden md:block"></div>
+        <div className="hidden md:block"></div>
         <Heading />
       </div>
       <Footer />
